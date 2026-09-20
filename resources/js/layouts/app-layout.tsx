@@ -1,13 +1,14 @@
-import AppLayoutTemplate from '@/layouts/app/app-sidebar-layout';
-import { type BreadcrumbItem } from '@/types';
+import AppHeader from '@/components/app-header';
 
 interface AppLayoutProps {
     children: React.ReactNode;
-    breadcrumbs?: BreadcrumbItem[];
 }
 
-export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => (
-    <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
-        {children}
-    </AppLayoutTemplate>
+export default ({ children }: AppLayoutProps) => (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <AppHeader />
+        <main className="pt-20">
+            {children}
+        </main>
+    </div>
 );
