@@ -32,7 +32,7 @@ export default function AppHeader() {
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 {/* Logo/Name */}
                 <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
-                    John Real
+                    johnreal.dev
                 </Link>
 
                 {/* Navigation */}

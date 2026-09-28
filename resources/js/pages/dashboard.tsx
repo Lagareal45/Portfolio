@@ -1,13 +1,14 @@
 import AppLayout from '@/layouts/app-layout';
 import { Head } from '@inertiajs/react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 
 export default function Dashboard() {
     return (
         <AppLayout>
             <Head title="John Real - Portfolio" />
-            <div className="flex h-full flex-1 flex-col gap-16 px-6 py-12 max-w-7xl mx-auto">
+            <div className="flex h-full flex-1 flex-col gap-16 px-6 py-12 max-w-7xl mx-auto relative">
                 {/* Hero Section */}
-                <section className="flex flex-col md:flex-row items-center justify-between gap-12 py-20">
+                <section className="flex flex-col md:flex-row items-center justify-between gap-12 py-45 relative">
                     <div className="flex-shrink-0">
                         <div className="relative">
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-2xl opacity-30"></div>
@@ -43,6 +44,12 @@ export default function Dashboard() {
                             </a>
                         </div>
                     </div>
+
+                    {/* Scroll Down Indicator */}
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+                        <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">Scroll Down</span>
+                        <ChevronDown className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                    </div>
                 </section>
 
                 {/* Work Section */}
@@ -59,10 +66,10 @@ export default function Dashboard() {
                             },
                             {
                                 id: 2,
-                                title: 'Project 2',
-                                image: null,
-                                description: 'A brief description of this project and its key features.',
-                                tech: null
+                                title: 'DepEd Vehicle Monitoring System',
+                                image: '/Project2.jpg',
+                                description: 'DepEd Vehicle Monitoring System is a Laravel-based web system developed to help the DepEd Bukidnon office manage vehicle trips and fuel records digitally. The system allows drivers to complete Trip Ticket and Gas Slip forms and automatically generates monthly vehicle and fuel consumption reports, making record management more organized and efficient.',
+                                tech: ['Laravel', 'React']
                             },
                             {
                                 id: 3,
@@ -97,7 +104,10 @@ export default function Dashboard() {
                                     <div className="flex gap-2 mt-3">
                                         {project.tech.map((tech) => (
                                             <span key={tech} className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-white/50 dark:border-white/20 rounded-full text-sm font-medium text-gray-800 dark:text-white">
-                                                <img src={tech === 'Flutter' ? '/Flutter_logo.svg.webp' : '/dart.png'} alt={tech} className="w-4 h-4" />
+                                                {tech === 'Flutter' && <img src="/Flutter_logo.svg.webp" alt={tech} className="w-4 h-4" />}
+                                                {tech === 'Dart' && <img src="/dart.png" alt={tech} className="w-4 h-4" />}
+                                                {tech === 'Laravel' && <img src="/Laravel.svg.webp" alt={tech} className="w-4 h-4" />}
+                                                {tech === 'React' && <img src="/React_Logo.svg" alt={tech} className="w-4 h-4" />}
                                                 {tech}
                                             </span>
                                         ))}
@@ -167,6 +177,15 @@ export default function Dashboard() {
                     </div>
                 </section>
             </div>
+
+            {/* New Message Button Fixed in Lower Right */}
+            <a
+                href="#contact"
+                className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-gray-900/90 dark:bg-white/90 backdrop-blur-xl text-white dark:text-gray-900 rounded-xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 font-medium"
+            >
+                <MessageCircle className="w-5 h-5" />
+                <span>Message Now</span>
+            </a>
         </AppLayout>
     );
 }
